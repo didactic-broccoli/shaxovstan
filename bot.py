@@ -8,10 +8,7 @@ try:
     import vk_api
     import requests
 except:
-    logger.critical('Установите необходимые модули через команду \'pip install -r requirements.txt\' перед запуском скрипта.'); exit()
-
-def key_generation():
-    return ''.join(k for k in list(random.choice(string.ascii_letters + string.digits) for i in range(random.randint(20, 30))))
+    print('Установите необходимые модули через команду \'pip install -r requirements.txt\' перед запуском скрипта.'); exit()
 
 def vk_send_message_to_user(vk, user_id, message, attachments = None, keyboard = None):
     vk.messages.send(user_id = int(user_id), random_id = vk_api.utils.get_random_id(), message=message, attachment = attachments, keyboard = keyboard)
@@ -23,7 +20,6 @@ MAX_NICKNAME_LENGTH = 30 # max count of symbols in nicknames
 
 config = configparser.ConfigParser()
 config.read("settings.ini", encoding="utf8") 
-
 
 vk_group_token = config['VK']['token'][1:-1]
 vk_group_id = int(config['VK']['group_id'][1:-1])
